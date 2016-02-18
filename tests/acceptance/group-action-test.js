@@ -1,7 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | compose action');
+moduleForAcceptance('Acceptance | group action');
 
 test('Form can submit and trigger actions', function (assert) {
   visit('/group');

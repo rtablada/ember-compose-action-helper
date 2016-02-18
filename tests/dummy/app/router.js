@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('group');
+  this.route('compose');
 });
 
 export default Router;

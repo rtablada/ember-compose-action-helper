@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
 Function composition or piping can be performed using the `compose` helper:
 
 ```htmlbars
-<button onclick={{action (compose (action 'add') (action 'multiply' 2) (action 'alert')) 2 10}}></button>
+<button onclick={{action (compose (action 'add') (action 'multiply' 2) (action 'alert')) 9 12}}>Compose</button>
 ```
 
 Then in the controller the action handlers would look like:
@@ -76,8 +76,10 @@ export default Ember.Controller.extend({
     },
 
     alert(result) {
-      window.alert(`The result is ${result}`);
+      window.alert(`The answer is ${result}`);
     },
   }
 });
 ```
+
+This will alert "The answer is 42" when the button is clicked.
