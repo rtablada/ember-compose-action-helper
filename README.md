@@ -8,6 +8,9 @@ ember install ember-compose-action-helper
 
 ## Usage
 
+
+### Grouping
+
 Use the `group-action` helper to combine multiple actions in to a single action.
 
 For instance, if a form needs to be reset and an alert needs to be created after a form submission is successful:
@@ -42,6 +45,38 @@ export default Ember.Controller.extend({
 
     alertSuccess(user) {
       window.alert(`The user ${user.name} was created`);
+    },
+  }
+});
+```
+
+### Composing
+
+Function composition or piping can be performed using the `compose` helper:
+
+```htmlbars
+<button onclick={{action (compose (action 'add') (action 'multiply' 2) (action 'alert')) 2 10}}></button>
+```
+
+Then in the controller the action handlers would look like:
+
+```js
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
+  name: '',
+
+  actions: {
+    add(a, b) {
+      return a + b;
+    },
+
+    multiply(a, b) {
+      return a * b;
+    },
+
+    alert(result) {
+      window.alert(`The result is ${result}`);
     },
   }
 });
