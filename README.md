@@ -8,12 +8,12 @@ ember install ember-compose-action-helper
 
 ## Usage
 
-Use the `compose-action` helper to combine multiple actions in to a single action.
+Use the `group-action` helper to combine multiple actions in to a single action.
 
 For instance, if a form needs to be reset and an alert needs to be created after a form submission is successful:
 
 ```htmlbars
-<form onsubmit={{action 'myAwesomeSubmit' name (compose-action (action 'resetForm') (action 'alertSuccess'))}}>
+<form onsubmit={{action 'myAwesomeSubmit' name (group-action (action 'resetForm') (action 'alertSuccess'))}}>
   {{input placeholder="Name" value=name}}
 
   <button>Submit</button>
