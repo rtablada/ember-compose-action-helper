@@ -1,4 +1,4 @@
-# Ember Compose Action Helper
+# Ember Compose Action Helper [![Build Status](https://travis-ci.org/rtablada/ember-compose-action-helper.svg?branch=master)](https://travis-ci.org/rtablada/ember-compose-action-helper)
 
 Action composition for Ember.
 
