@@ -1,0 +1,9 @@
+<form onsubmit={{action 'myAwesomeSubmit' name (compose-action (action 'resetForm') (action 'alertSuccess'))}}>
+  {{input placeholder="Name" value=name}}
+
+  <button>Submit</button>
+</form>
+
+{{#if savedName}}
+  <h2>The user {{savedName}} was created.</h2>
+{{/if}}

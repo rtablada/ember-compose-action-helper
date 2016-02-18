@@ -1,26 +1,48 @@
-# Ember-compose-action-helper
+# Ember Compose Action Helper
 
-This README outlines the details of collaborating on this Ember addon.
+Action composition for Ember.
 
-## Installation
+```bash
+ember install ember-compose-action-helper
+```
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Usage
 
-## Running
+Use the `compose-action` helper to combine multiple actions in to a single action.
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+For instance, if a form needs to be reset and an alert needs to be created after a form submission is successful:
 
-## Running Tests
+```htmlbars
+<form onsubmit={{action 'myAwesomeSubmit' name (compose-action (action 'resetForm') (action 'alertSuccess'))}}>
+  {{input placeholder="Name" value=name}}
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+  <button>Submit</button>
+</form>
+```
 
-## Building
+Then in the controller the action handlers would look like:
 
-* `ember build`
+```js
+import Ember from 'ember';
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+export default Ember.Controller.extend({
+  name: '',
+
+  actions: {
+    myAwesomeSubmit(name, afterSuccess, ev) {
+      ev.preventDefault();
+
+      this.store.createRecord('user', {name}).save()
+        .then(afterSuccess);
+    },
+
+    resetForm() {
+      this.set('name', '');
+    },
+
+    alertSuccess(user) {
+      window.alert(`The user ${user.name} was created`);
+    },
+  }
+});
+```
