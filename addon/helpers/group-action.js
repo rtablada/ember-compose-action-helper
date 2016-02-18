@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function composeAction(actions/*, hash*/) {
+export function groupAction(actions/*, hash*/) {
   return function (...args) {
     return actions.map((action) => {
       return action(...args);
@@ -8,4 +8,4 @@ export function composeAction(actions/*, hash*/) {
   };
 }
 
-export default Ember.Helper.helper(composeAction);
+export default Ember.Helper.helper(groupAction);

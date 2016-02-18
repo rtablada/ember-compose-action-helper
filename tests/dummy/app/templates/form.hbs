@@ -1,4 +1,4 @@
-<form onsubmit={{action 'myAwesomeSubmit' name (compose-action (action 'resetForm') (action 'alertSuccess'))}}>
+<form onsubmit={{action 'myAwesomeSubmit' name (group-action (action 'resetForm') (action 'alertSuccess'))}}>
   {{input placeholder="Name" value=name}}
 
   <button>Submit</button>
